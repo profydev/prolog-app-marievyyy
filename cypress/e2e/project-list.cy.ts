@@ -20,6 +20,22 @@ describe("Project List", () => {
       cy.viewport(1025, 900);
     });
 
+    it("should show loader when loading data then hide after the project renders", () => {
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        fixture: "projects.json",
+      }).as("getProjects");
+
+      // Now visit the page and assert the loading spinner is shown
+      cy.visit("http://localhost:3000/dashboard");
+
+      cy.get(".loader")
+        .should("be.visible")
+        .then(() => {
+          cy.wait("@getProjects");
+          cy.get(".loader").should("not.exist");
+        });
+    });
+
     it("renders the projects", () => {
       const languageNames = ["React", "Node.js", "Python"];
       const statusText = ["Critical", "Warning", "Stable"];
