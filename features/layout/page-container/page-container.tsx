@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { SidebarNavigation } from "../sidebar-navigation";
+import { PageFooter } from "../page-footer/page-footer";
 import styles from "./page-container.module.scss";
 
 type PageContainerProps = {
@@ -27,6 +28,7 @@ export function PageContainer({ children, title, info }: PageContainerProps) {
           {children}
         </div>
       </main>
+      <PageFooter />
     </div>
   );
 }

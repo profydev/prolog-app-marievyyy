@@ -1,0 +1,13 @@
+@use "@styles/color";
+@use "@styles/space";
+
+.listItem {
+  height: space.$s6;
+  display: flex;
+  align-items: center;
+}
+
+.anchor {
+  color: color.$gray-500;
+  text-decoration: none;
+}
