@@ -10,7 +10,7 @@
   background: color.$gray-900;
 
   @media (min-width: breakpoint.$desktop) {
-    flex-direction: row;
+    flex-flow: row wrap;
   }
 }
 
