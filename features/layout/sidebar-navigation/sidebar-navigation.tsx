@@ -73,6 +73,7 @@ export function SidebarNavigation() {
         />
         <nav
           className={classNames(
+            `header-nav`,
             styles.nav,
             isMobileMenuOpen && styles.isMobileMenuOpen,
           )}

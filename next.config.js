@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { version } = require('./package.json');
+const { version } = require("./package.json");
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,8 +8,8 @@ const nextConfig = {
     domains: ["prolog-api.profy.dev"],
   },
   env: {
-    version
-  }
+    version,
+  },
 };
 
 module.exports = nextConfig;
