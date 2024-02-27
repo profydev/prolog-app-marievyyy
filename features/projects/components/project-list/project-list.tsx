@@ -1,10 +1,22 @@
 import { ProjectCard } from "../project-card";
 import { useGetProjects } from "../../api/use-get-projects";
 import classNames from "classnames";
+import {
+  Alert,
+  AlertColor,
+  AlertIcon,
+  Button,
+  ButtonColor,
+  ButtonTextWeight,
+} from "@features/ui";
 import styles from "./project-list.module.scss";
 
 export function ProjectList() {
-  const { data, isLoading, isError, error } = useGetProjects();
+  const { data, isLoading, isError, refetch } = useGetProjects();
+
+  const handleAlertButtonClick = () => {
+    refetch();
+  };
 
   if (isLoading) {
     return (
@@ -16,8 +28,37 @@ export function ProjectList() {
   }
 
   if (isError) {
-    console.error(error);
-    return <div>Error: {error.message}</div>;
+    return (
+      <Alert
+        color={AlertColor.error}
+        icon={AlertIcon.error}
+        className="alert-error"
+      >
+        <span>There was a problem while loading the project data</span>
+        <Button
+          color={ButtonColor.error}
+          fontWeight={ButtonTextWeight.semibold}
+          onClick={handleAlertButtonClick}
+        >
+          <span>Try again</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M4.16669 10.0001H15.8334M15.8334 10.0001L10 4.16675M15.8334 10.0001L10 15.8334"
+              stroke="#B42318"
+              strokeWidth="1.67"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Button>
+      </Alert>
+    );
   }
 
   return (
