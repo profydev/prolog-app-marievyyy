@@ -1,3 +1,7 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
 .button {
   cursor: pointer;
 
@@ -10,6 +14,24 @@
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
+  display: flex;
+  align-items: center;
+  gap: space.$s2;
+
+  &.error {
+    color: color.$error-700;
+  }
+
+  // font-weight
+  &.semibold {
+    font: font.$text-sm-medium;
+  }
+
+  // icon
+  img,
+  svg {
+    order: 1;
+  }
 
   &::-moz-focus-inner {
     border: 0;

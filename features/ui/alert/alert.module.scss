@@ -1,0 +1,29 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.container {
+  display: flex;
+  align-items: center;
+  border-radius: space.$s2;
+  padding: space.$s4;
+  border: 1px solid;
+  gap: space.$s3;
+  font: font.$text-sm-medium;
+
+  &.error {
+    background: color.$error-25;
+    border-color: color.$error-300;
+    color: color.$error-700;
+  }
+
+  > :last-child {
+    margin-left: auto;
+  }
+
+  // if there's button
+  button {
+    width: 100%;
+    max-width: fit-content;
+  }
+}
