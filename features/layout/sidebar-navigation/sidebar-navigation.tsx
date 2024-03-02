@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { NavigationContext } from "./navigation-context";
 import { MenuItemButton } from "./menu-item-button";
 import { MenuItemLink } from "./menu-item-link";
-import { Button } from "@features/ui";
+import { Button, ButtonColor } from "@features/ui";
 import styles from "./sidebar-navigation.module.scss";
 
 const menuItems = [
@@ -56,6 +56,7 @@ export function SidebarNavigation() {
           <Button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
             className={styles.menuButton}
+            color={ButtonColor.default}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -84,6 +85,7 @@ export function SidebarNavigation() {
                 key={index}
                 {...menuItem}
                 isCollapsed={isSidebarCollapsed}
+                isMobileMenuOpen={isMobileMenuOpen}
                 isActive={router.pathname === menuItem.href}
               />
             ))}
@@ -93,6 +95,7 @@ export function SidebarNavigation() {
               text="Support"
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
+              isMobileMenuOpen={isMobileMenuOpen}
               onClick={() =>
                 (window.location.href = "mailto:support@prolog-app.com")
               }
@@ -105,6 +108,7 @@ export function SidebarNavigation() {
                   : "/icons/arrow-left.svg"
               }
               isCollapsed={isSidebarCollapsed}
+              isMobileMenuOpen={isMobileMenuOpen}
               onClick={() => toggleSidebar()}
               className={styles.collapseMenuItem}
             />
