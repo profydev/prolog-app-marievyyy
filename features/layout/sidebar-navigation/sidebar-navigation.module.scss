@@ -80,6 +80,10 @@
 .menuIcon {
   display: block;
   width: space.$s10;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: none;
+  }
 }
 
 .menuOverlay {

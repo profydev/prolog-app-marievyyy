@@ -2,28 +2,46 @@ import { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 import styles from "./button.module.scss";
 
-export enum ButtonTextWeight {
-  regular = "regular",
-  semibold = "semibold",
+export enum ButtonSize {
+  default = "default",
+  small = "small",
+  medium = "medium",
+  large = "large",
+  xlarge = "xlarge",
 }
 
 export enum ButtonColor {
+  default = "default",
   primary = "primary",
+  secondary = "secondary",
   gray = "gray",
+  empty = "empty",
+  emptyGray = "emptyGray",
   error = "error",
-  warning = "warning",
-  success = "success",
+  emptyError = "emptyError",
+}
+
+export enum ButtonIcon {
+  default = "default",
+  leading = "leading",
+  trailing = "trailing",
+  only = "only",
 }
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  color?: string;
-  fontWeight?: string;
-  icon?: string;
+  children?: React.ReactNode;
+  size?: ButtonSize;
+  color?: ButtonColor;
+  icon?: ButtonIcon;
+  iconSrc?: string;
 };
 
 export function Button({
-  color = ButtonColor.primary,
-  fontWeight = ButtonTextWeight.regular,
+  children,
+  size = ButtonSize.default,
+  color = ButtonColor.default,
+  icon = ButtonIcon.default,
+  iconSrc,
   ...props
 }: ButtonProps) {
   return (
@@ -31,10 +49,15 @@ export function Button({
       {...props}
       className={classNames(
         styles.button,
+        styles[size],
         styles[color],
-        styles[fontWeight],
+        styles[icon],
         props.className,
       )}
-    />
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {iconSrc && <img className={styles.image} src={iconSrc} alt="icon" />}
+      {icon !== ButtonIcon.only && children}
+    </button>
   );
 }

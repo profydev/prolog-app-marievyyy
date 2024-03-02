@@ -9,6 +9,7 @@ type MenuItemProps = {
   href: string;
   isActive: boolean;
   isCollapsed: boolean;
+  isMobileMenuOpen: boolean;
 };
 
 export function MenuItemLink({
@@ -17,13 +18,14 @@ export function MenuItemLink({
   iconSrc,
   isActive,
   isCollapsed,
+  isMobileMenuOpen,
 }: MenuItemProps) {
   return (
     <li className={classNames(styles.listItem, isActive && styles.active)}>
       <Link className={styles.anchor} href={href}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className={styles.icon} src={iconSrc} alt={`${text} icon`} />{" "}
-        {!isCollapsed && text}
+        {(!isCollapsed || isMobileMenuOpen) && text}
       </Link>
     </li>
   );

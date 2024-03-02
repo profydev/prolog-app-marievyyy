@@ -7,7 +7,7 @@ import {
   AlertIcon,
   Button,
   ButtonColor,
-  ButtonTextWeight,
+  ButtonIcon,
 } from "@features/ui";
 import styles from "./project-list.module.scss";
 
@@ -36,11 +36,11 @@ export function ProjectList() {
       >
         <span>There was a problem while loading the project data</span>
         <Button
-          color={ButtonColor.error}
-          fontWeight={ButtonTextWeight.semibold}
+          color={ButtonColor.emptyError}
           onClick={handleAlertButtonClick}
+          icon={ButtonIcon.trailing}
         >
-          <span>Try again</span>
+          <span className={styles.textMedium}>Try again</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
