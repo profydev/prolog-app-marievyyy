@@ -1,0 +1,98 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
+.label {
+  display: block;
+  font: font.$text-sm-medium;
+  color: color.$gray-700;
+  margin-bottom: 0.375rem;
+  max-width: 20rem;
+}
+
+.input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid color.$primary-300;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
+  color: color.$gray-500;
+  font: font.$text-md-regular;
+  cursor: default;
+  padding-block: 0.625rem;
+  padding-inline: 0.875rem;
+  margin-bottom: 0.38rem;
+
+  &.icon {
+    padding-left: calc(0.88rem + 1.25rem + 0.5rem);
+  }
+
+  &.filled {
+    color: color.$gray-900;
+  }
+
+  &.disabled {
+    background-color: color.$gray-50;
+    border-color: color.$gray-300;
+    color: color.$gray-500;
+  }
+
+  &.disabled:focus {
+    box-shadow: none;
+  }
+
+  &.error {
+    border-color: color.$error-300;
+  }
+
+  &.error:focus {
+    box-shadow:
+      0 0 0 4px color.$error-100,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:focus {
+    box-shadow:
+      0 0 0 4px color.$primary-100,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+    cursor: text;
+    outline: none;
+  }
+}
+
+// images
+.image {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  top: 0.72rem;
+  left: 0.88rem;
+
+  &.icon {
+    z-index: 1;
+  }
+
+  &.error {
+    left: auto;
+    right: 0.88rem;
+  }
+}
+
+.hint {
+  color: color.$gray-500;
+  font: font.$text-sm-regular;
+}
+
+.errorMessage {
+  color: color.$error-500;
+  font: font.$text-sm-regular;
+}
